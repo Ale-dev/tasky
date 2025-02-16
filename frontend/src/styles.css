@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+@font-face {
+  font-family: "Onest Variable";
+  src: url("../public/font/webfonts/onest-cyrillic-700-normal.woff")
+    format("woff");
+  font-weight: 700;
+}
+
+@theme {
+  --font-one-variable: "Onest Variable", Arial;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  font-family: "Onest Variable", system-ui;
+}
