@@ -37,20 +37,65 @@
         in the most efficent way!
       </p>
 
-      <form class="w-full flex flex-col">
-        <input
-          type="text"
-          class="mb-3 text-sm rounded-lg block w-full p-2.5 border-gray-400 border-[1px]"
-          placeholder="Email"
-        />
-        <input
-          type="text"
-          class="mb-3 text-sm rounded-lg block w-full p-2.5 border-gray-400 border-[1px]"
-          placeholder="Password"
-        />
+      <form
+        class="w-full flex flex-col gap-3"
+        method="post"
+        [formGroup]="loginForm"
+        (ngSubmit)="signUp()"
+      >
+        <div>
+          <label for="email" class="block mb-2 text-sm font-medium"
+            >Your name</label
+          >
+          <input
+            type="text"
+            class="mb text-sm font-medium rounded-lg block w-full p-2.5 border-gray-400 border-[1px]"
+            placeholder="Email"
+            name="email"
+            id="email"
+            formControlName="email"
+          />
+          <div class="flex flex-col gap-1">
+            @if (loginForm.get("email")?.hasError("required") && (
+            loginForm.get('email')?.dirty || loginForm.get('email')?.touched ))
+            {
+            <span class="mt text-sm text-red-600 dark:text-red-500 font-medium">
+              This field is required
+            </span>
+            } @if (loginForm.get("email")?.hasError("required") && (
+            loginForm.get('email')?.dirty || loginForm.get('email')?.touched ))
+            {
+            <span class="text-sm text-red-600 dark:text-red-500 font-medium">
+              Email field must be a valid email
+            </span>
+            }
+          </div>
+        </div>
+
+        <div>
+          <label for="password" class="block mb-2 text-sm font-medium"
+            >Your password</label
+          >
+          <input
+            type="text"
+            class="mb-3 text-sm rounded-lg font-medium block w-full p-2.5 border-gray-400 border-[1px]"
+            placeholder="Password"
+            name="password"
+            type="password"
+            formControlName="password"
+          />
+          @if (loginForm.get("password")?.hasError("required") && (
+          loginForm.get('password')?.dirty || loginForm.get('password')?.touched
+          )) {
+          <span class="mt-2 text-sm text-red-600 dark:text-red-500 font-medium">
+            This field is required
+          </span>
+          }
+        </div>
 
         <a class="text-end text-blue-600">Forgot password?</a>
 
+        <!--
         <div class="inline-flex items-center justify-center w-full">
           <hr
             class="w-64 h-1 my-8 bg-gray-200 border-0 rounded-sm dark:bg-gray-700"
@@ -62,19 +107,23 @@
 
         <button
           class="mb-5 text-sm rounded-lg w-full p-2.5 border-gray-400 border-[1px] flex justify-center items-center gap-2 cursor-pointer"
+          type="button"
         >
           <svg-Google [size]="{ width: 20, height: 20 }" />
           Log in with Google
         </button>
+      -->
 
         <button
-          class="mb-5 font-normal rounded-full w-full p-2.5 bg-blue-700 text-white flex justify-center items-center gap-2 cursor-pointer"
+          class="mb-5 font-normal rounded-full w-full p-2.5 bg-blue-700 text-white flex justify-center items-center gap-2 cursor-pointer hover:bg-blue-800"
+          type="submit"
+          [disabled]="!loginForm.valid"
         >
           Login
         </button>
 
         <p class="text-center">
-          Don't have an Account?
+          Don't have an account?
           <a class="text-blue-600 cursor-pointer">Sign up</a>
         </p>
       </form>
