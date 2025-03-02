@@ -1,0 +1,45 @@
+<div class="">
+  <button
+    class="text-white gap-1 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    type="button"
+    (click)="toggle()"
+  >
+    {{ currentLangName }}
+    <svg
+      class="hs-dropdown-open:rotate-180 size-4 {{
+        show ? 'rotate-180' : 'rotate-0'
+      }}"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  </button>
+
+  <div
+    class="{{
+      show ? 'block' : 'hidden'
+    }} z-10 bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 absolute"
+  >
+    <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+      @for (lang of availableLangs; track $index) {
+
+      <i
+        [class.active]="lang.langName == currentLangName"
+        class="block px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        (click)="switchLanguage(lang.code)"
+      >
+        {{ lang.langName }}
+      </i>
+
+      }
+    </ul>
+  </div>
+</div>

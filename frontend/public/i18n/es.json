@@ -1,0 +1,36 @@
+{
+  "login": {
+    "actions": {
+      "signIn": "Iniciar sesión",
+      "signUp": "Registrarse",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "rememberMe": "Recordarme",
+      "dontHaveAccount": "¿No tienes una cuenta?",
+      "alreadyHaveAccount": "Ya estas registrado?",
+      "signInWidth": "Ingresar con"
+    },
+    "fields": {
+      "username": {
+        "label": "Nombre de usuario",
+        "placeholder": "Ingresa tu nombre de usuario"
+      },
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "Ingresa tu contraseña"
+      },
+      "email": {
+        "label": "Correo electrónico",
+        "placeholder": "Ingresa tu correo electrónico"
+      }
+    },
+    "errorMessages": {
+      "emailNotValid": "El campo de correo electrónico debe ser válido",
+      "usernameRequired": "El nombre de usuario es obligatorio",
+      "passwordRequired": "La contraseña es obligatoria",
+      "invalidCredentials": "Nombre de usuario o contraseña incorrectos"
+    },
+    "successMessages": {
+      "loginSuccess": "¡Has iniciado sesión correctamente!"
+    }
+  }
+}

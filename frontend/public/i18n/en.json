@@ -1,0 +1,36 @@
+{
+  "login": {
+    "actions": {
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "forgotPassword": "Forgot your password?",
+      "rememberMe": "Remember me",
+      "dontHaveAccount": "Don't have an account?",
+      "alreadyHaveAccount": "already have an account?",
+      "signInWidth": "Sign in width"
+    },
+    "fields": {
+      "username": {
+        "label": "Username",
+        "placeholder": "Enter your username"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      }
+    },
+    "errorMessages": {
+      "emailNotValid": "Email field must be a valid email",
+      "usernameRequired": "Username is required",
+      "passwordRequired": "Password is required",
+      "invalidCredentials": "Invalid username or password"
+    },
+    "successMessages": {
+      "loginSuccess": "You have successfully logged in!"
+    }
+  }
+}

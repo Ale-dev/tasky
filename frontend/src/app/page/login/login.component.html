@@ -1,0 +1,137 @@
+<div class="flex bg-gradient-to-r from-gray-900 to-indigo-600 h-full">
+  <section class="flex flex-col justify-center items-center w-full h-full">
+    <div class="flex flex-col gap-4 lg:mb-11">
+      <header class="flex justify-between">
+        <h2 class="text-2xl font-bold text-white">
+          <span class="bg-blue-500 rounded-sm text-amber-50">TA</span>SKY
+        </h2>
+        <app-language-switcher />
+      </header>
+      <h2 class="text-3xl lg:text-6xl font-bold text-amber-200">
+        {{ "login.actions." + path | translate }}
+      </h2>
+
+      <p class="font-md lg:font-medium text-gray-500">
+        @if (path == "signIn") {
+        {{ "login.actions.dontHaveAccount" | translate }}
+        <a class="text-blue-600 cursor-pointer" routerLink="/signUp">
+          {{ "login.actions.signUp" | translate }}
+        </a>
+        } @else {
+        {{ "login.actions.alreadyHaveAccount" | translate }}
+        <a class="text-blue-600 cursor-pointer" routerLink="/signIn">
+          {{ "login.actions.signIn" | translate }}
+        </a>
+        }
+      </p>
+
+      <form
+        class="flex flex-col gap-4.5 w-auto lg:w-lg mt-11"
+        method="post"
+        [formGroup]="loginForm"
+        (ngSubmit)="login()"
+      >
+        <div>
+          <label
+            for="Email"
+            class="block mb-2 text-sm font-medium text-amber-200"
+          >
+            {{ "login.fields.email.label" | translate }}
+          </label>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+            >
+              <svg-Envelope [size]="{ width: 20, height: 20 }" />
+            </div>
+            <input
+              type="text"
+              class="border border-gray-300 hover:border-blue-300 text-white font-medium text-sm rounded-lg block w-full ps-10 p-3"
+              placeholder="{{ 'login.fields.email.placeholder' | translate }}"
+              formControlName="email"
+            />
+          </div>
+          @if (loginForm.get("email")?.hasError("email") &&
+          (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)) {
+          <span
+            class="text-sm absolute text-red-600 dark:text-red-500 font-medium"
+          >
+            {{ "login.errorMessages.emailNotValid" | translate }}
+          </span>
+          }
+        </div>
+        <div>
+          <label
+            for="Password"
+            class="block mb-2 text-sm font-medium text-amber-200"
+          >
+            {{ "login.fields.password.label" | translate }}
+          </label>
+          <div class="relative">
+            <div
+              class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none"
+            >
+              <svg-Envelope [size]="{ width: 20, height: 20 }" />
+            </div>
+            <input
+              type="password"
+              class="border border-gray-300 hover:border-blue-300 text-white font-medium text-sm rounded-lg block w-full ps-10 p-3"
+              placeholder="{{
+                'login.fields.password.placeholder' | translate
+              }}"
+              formControlName="password"
+              required
+            />
+          </div>
+          @if (loginForm.get("password")?.hasError("required") &&
+          (loginForm.get('password')?.dirty ||
+          loginForm.get('password')?.touched)) {
+          <span
+            class="text-sm absolute text-red-600 dark:text-red-500 font-medium"
+          >
+            {{ "login.errorMessages.passwordRequired" | translate }}
+          </span>
+          }
+        </div>
+        <button
+          class="font-normal mt-2 rounded-md w-full p-2.5 bg-blue-700 text-white flex justify-center items-center gap-2 cursor-pointer hover:bg-blue-800"
+          type="submit"
+          [disabled]="!loginForm.valid"
+        >
+          {{ "login.actions." + path | translate }}
+        </button>
+
+        <div class="inline-flex items-center justify-center">
+          <hr class="w-64 h-px my-8 text-white" />
+          <span
+            class="absolute px-3 font-medium left-w-full/2 bg-[#1D2457] text-white border-1"
+            >or</span
+          >
+        </div>
+
+        <div class="flex gap-2 justify-center md:justify-between">
+          <button
+            type="button"
+            class="flex items-center border-2 border-blue-400 sm:border-0 gap-2 sm:bg-blue-600 hover:bg-blue-800 text-white font-medium rounded-lg text-sm px-5 py-2.5"
+          >
+            <svg-Google [size]="{ width: 20, height: 20 }" />
+            <span class="hidden sm:block"
+              >{{ "login.actions.signInWidth" | translate }} Google</span
+            >
+          </button>
+
+          <button
+            type="submit"
+            [disabled]="!loginForm.valid"
+            class="flex items-center border-2 border-black sm:border-0 text-white gap-2 sm:bg-[#24292F] hover:bg-black font-medium rounded-lg text-sm px-5 py-2 text-center"
+          >
+            <svg-github [size]="{ width: 25, height: 25 }" />
+            <span class="hidden sm:block"
+              >{{ "login.actions.signInWidth" | translate }} Github</span
+            >
+          </button>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
